@@ -1,0 +1,18 @@
+<div class="order">
+
+  <h2>Order Summary</h2>
+  <p *ngIf="showSubTitle">you have {{ cartItemCount }} items in your shopping cart.</p>
+
+
+  <ul class="list-group list-group-flush">
+
+    <li class="list-group-item" *ngFor="let item of cartsItems">
+      {{ item.quantity }} x {{ item.product.title }}
+      <span> {{ item.product.price | currency}} </span>
+    </li>
+    <li class="list-group-item font-weight-bold">Total
+      <span> {{ totalPrcie | currency}} </span>
+    </li>
+  </ul>
+
+</div>

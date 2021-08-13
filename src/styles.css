@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  padding-top: 80px;
+  min-height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+ 
+}
+
+ngx-loading-bar #loading-bar-spinner {
+  visibility: hidden;
+}

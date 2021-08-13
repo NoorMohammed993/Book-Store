@@ -1,0 +1,63 @@
+<h1>Shopping Cart</h1>
+<p>you have {{ itemsCount }} book<span *ngIf="itemsCount > 1">s</span> in you Cart</p>
+
+<div class="col-sm-10">
+  <table class="table table-hover table-condensed table-light">
+    <thead>
+      <tr>
+        <th>Book Cover</th>
+        <th>Book Title</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-right"> Price</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="items.length > 0 else noItemYet">
+
+      <tr *ngFor="let item of items">
+
+        <td> <img [src]="item.product.imageUrl" class="img-responsive rounded-circle" style="width:55px;height:55px;"></td>
+
+        <td>
+          {{ item.product.title }}
+        </td>
+
+        <td class="text-center">
+          <button (click)="addItem(item.product)" class="btn btn-success" style="margin-right:5px;">+</button>
+          {{ item.quantity}} in cart
+          <button (click)="removeItem(item.product)" class="btn btn-danger" style="margin-left:5px;"> - </button>
+        </td>
+
+        <td class="text-right">{{ item.product.price * item.quantity | currency }}</td>
+
+      </tr>
+      <tr *ngIf="totalPriceVisiability">
+
+        <td class="font-weight-bold">Total Price</td>
+        <td></td>
+        <td></td>
+        <td class="text-right font-weight-bold"> {{ totalPrice | currency }}</td>
+
+      </tr>
+    </tbody>
+    <ng-template #noItemYet>
+      <tbody>
+        <tr class="text-center">
+          <td colspan="4">
+            <h3> Your Sopping cart is empty </h3>
+          </td>
+        </tr>
+      </tbody>
+    </ng-template>
+  </table>
+
+  <hr>
+  <div *ngIf="totalPriceVisiability">
+    <a class="btn btn-primary" [routerLink]="['/check-out']" routerLinkActive="active">
+      Check Out</a>
+    <button (click)="clearShoppingCart()" class="btn btn-secondary btn-xs" style="float:right">
+      Clear Shopping Cart</button>
+  </div>
+
+</div>
+
+

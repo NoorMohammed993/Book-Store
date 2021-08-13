@@ -1,0 +1,80 @@
+<h1>Shipping</h1>
+
+<form #f="ngForm" (ngSubmit)="save(f)">
+
+  <div class="form-group col-sm-10">
+    <label for="name" class="col-form-label">Name</label>
+    <input class="form-control" type="text" id="name" #name="ngModel" ngModel name="name" required minlength="3"
+      maxlength="30" pattern="[a-zA-Z ]*" placeholder="Your Name">
+    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+
+      <p *ngIf="name.errors.required">this feild is required.</p>
+      <p *ngIf="name.errors.pattern">please enter a vaild name.</p>
+      <p *ngIf="name.errors.minlength">your name length must be at least {{name.errors.minlength.requiredLength}}
+        characters.</p>
+      <p *ngIf="name.errors.maxlength">your name length must not be more than {{name.errors.maxlength.requiredLength}}
+        characters.</p>
+
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10">
+    <label for="city" class="col-form-label">City</label>
+    <input class="form-control" type="text" id="city" #city="ngModel" ngModel name="city" required pattern="[a-zA-Z0-9 ]*"
+      minlength="3" maxlength="30" placeholder="City Name">
+    <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+
+      <p *ngIf="city.errors.required">this feild is required.</p>
+      <p *ngIf="city.errors.pattern">please enter a vaild city.</p>
+      <p *ngIf="city.errors.minlength">city name length must be at least {{city.errors.minlength.requiredLength}}
+        characters.</p>
+      <p *ngIf="city.errors.maxlength">city name length must not be more than {{city.errors.maxlength.requiredLength}}
+        characters.</p>
+
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10">
+    <label for="address" class="col-form-label">Address</label>
+    <input class="form-control" type="text" id="address" #address="ngModel" ngModel name="address" required pattern="[a-zA-Z0-9 ]*"
+      minlength="3" maxlength="60" placeholder="Your Address">
+
+    <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
+
+      <p *ngIf="address.errors.required">this feild is required.</p>
+      <p *ngIf="address.errors.pattern">please enter a vaild address.</p>
+      <p *ngIf="address.errors.minlength">address length must be at least {{address.errors.minlength.requiredLength}}
+        characters.</p>
+      <p *ngIf="address.errors.maxlength">address length must not be more than
+        {{address.errors.maxlength.requiredLength}}
+        characters.</p>
+
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10">
+    <label for="phone" class="col-form-label">Phone Number</label>
+    <input class="form-control" type="text" id="phone" #phone="ngModel" ngModel name="phone" required number minlength="10"
+      maxlength="11" placeholder="Phone Number">
+
+    <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+      <p *ngIf="phone.errors.required">this feild is required.</p>
+      <p *ngIf="phone.errors.number">please enter a vaild phone.</p>
+      <p *ngIf="phone.errors.minlength">number length must be at least {{phone.errors.minlength.requiredLength}}
+        characters.</p>
+      <p *ngIf="phone.errors.maxlength">number length must not be more than
+        {{phone.errors.maxlength.requiredLength}}
+        characters.</p>
+
+    </div>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary" [disabled]="f.invalid || cartItemCount == 0">Send Oreder</button>
+
+</form>
+
+<div class="alert alert-danger text-center" style="margin-top:5px;"  *ngIf="cartItemCount == 0">
+  Your Shopping Cart Empty you canot send order
+</div>

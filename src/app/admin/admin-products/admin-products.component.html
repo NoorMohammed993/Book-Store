@@ -1,0 +1,25 @@
+<p>
+  <button class="btn btn-primary" [routerLink]="['/admin/new/products']" routerLinkActive="active"> create new item</button>
+</p>
+<p>
+  <input type="text" #search class="form-control" (keyup)="filter(search.value)" placeholder="Search...">
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of filteredProducts">
+      <td>{{c.title}}</td>
+      <td>{{c.price | currency }}</td>
+      <td><a [routerLink]="['/admin/product/',c.id]" routerLinkActive="active">Edit</a></td>
+    </tr>
+    <tr>
+      <td colspan="3" class="text-center" *ngIf="resultState">No Resualt match your search</td>
+    </tr>
+  </tbody>
+</table>

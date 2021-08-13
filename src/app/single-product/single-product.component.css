@@ -1,0 +1,56 @@
+.author {
+  color: blueviolet;
+}
+
+.price {
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.description {
+  font-size: 1.2rem
+}
+
+.col-md-4 {
+  border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+.col-md-8 {
+  padding-left: 40px;
+}
+
+button {
+  background-color: #7E57C2;
+  border-color: #7E57C2;
+
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #7E57C2;
+  border-color: #7E57C2;
+}
+
+.card-footer {
+  padding: 0px;
+  background-color: rgba(0, 0, 0, .03);
+  border-top: 1px solid rgba(0, 0, 0, .125);
+  line-height: 2.5rem;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+
+  .h1,
+  h1 {
+    font-size: 1.5rem;
+    margin-top: 15px;
+  }
+
+  .row,
+  .description {
+    text-align: center;
+  }
+
+
+}

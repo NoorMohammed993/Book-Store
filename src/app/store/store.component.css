@@ -1,0 +1,19 @@
+.list-group-item {
+  cursor: pointer;
+}
+
+.row {
+  margin: 0px;
+}
+
+.col {
+  margin-bottom: 25px;
+
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+

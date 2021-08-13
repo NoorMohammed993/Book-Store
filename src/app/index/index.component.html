@@ -1,0 +1,193 @@
+<!----------------------------------------- Header Section --------------------------------------------->
+
+<div class="header-section">
+
+  <div class="container">
+    <h1>Find Your Favourite Books, Novels and More ...</h1>
+    <h4> A massive collection of books for you to read </h4>
+
+    <input type="text" class="form-control col-6 mx-auto" placeholder="" #query (keyup)="search(query.value)">
+    <div class="con col-6 mx-auto col-xs-12">
+      <ul class="list-group  col-6 mx-auto">
+        <li class="list-group-item" *ngFor="let item of filteredProducts" [routerLink]="['/product',item.id]">
+          <span style="float:left">{{ item.title }} </span>
+        </li>
+        <li class="list-group-item" *ngIf="filteredProducts.length == 0 && query.value.length >= 1 ">
+          <span style=""> No results found </span>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="mar">
+      <span [routerLink]="['/store']" routerLinkActive="active"> Start Now</span>
+    </div>
+
+  </div>
+</div>
+
+<!----------------------------------------- Body Section One --------------------------------------------->
+
+<div class="body-section1">
+  <div class="container">
+    <h3>Our Services</h3>
+    <p>offers you over million titles across categories such as Children’s Books, Business &
+      Economics, Indian Writing and Literature & Fiction.</p>
+    <div class="row">
+
+      <div class="col-sm-3">
+        <div class="contain">
+          <img src="../../assets/icon-1.svg" style="width:100%;height: 130px;">
+          <span class="title"> Buy Books </span>
+          <span class="title-con">Reading books is the favourite pastime of many people. If you’re bitten by
+            the book-bug too, then there is a massive collection of books for you to read. From bestsellers
+            to new & future releases.</span>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="contain">
+
+          <img src="../../assets/icon-2 (3).svg" style="width:100%;height: 130px;">
+          <span class="title"> Explore Books </span>
+          <span class="title-con">Reading books is the favourite pastime of many people. If you’re bitten by
+            the book-bug too, then there is a massive collection of books for you to read. From bestsellers
+            to new & future releases.</span>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="contain">
+          <img src="../../assets/icon-3.svg">
+          <span class="title"> Best Books </span>
+          <span class="title-con">Reading books is the favourite pastime of many people. If you’re bitten by
+            the book-bug too, then there is a massive collection of books for you to read. From bestsellers
+            to new & future releases.</span>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="contain">
+          <img src="../../assets/icon-4.svg">
+          <span class="title"> Best Collections </span>
+          <span class="title-con">Reading books is the favourite pastime of many people. If you’re bitten by
+            the book-bug too, then there is a massive collection of books for you to read. From bestsellers
+            to new & future releases.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----------------------------------------- Body Section Two --------------------------------------------->
+
+
+<div class="body-section2">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <h1>
+          Find Your Favourite Books, Novels and More ...
+        </h1>
+        <h4>there is a massive collection of books for you to read </h4>
+      </div>
+      <div class="col-sm-5">
+        <img src="../../assets/body-cover.svg ">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!----------------------------------------- Body Section Three --------------------------------------------->
+
+<div class="body-section3">
+  <div class="container">
+    <h3>Latest Uploaded Books</h3>
+    <div class="swiper-container text-center" [swiper]="config" [(index)]="index" *ngIf="producs.length != 0">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide" *ngFor="let item of latestProducs">
+          <app-cart-operation [item]="item"></app-cart-operation>
+        </div>
+
+        <div class="swiper-scrollbar"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev">efef</div>
+        <div class="swiper-button-next">few</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!----------------------------------------- hr Tags----------------------------------------------------->
+
+<div class="container">
+  <hr>
+</div>
+
+<!----------------------------------------- hr Tags------------------------------------------------------->
+
+
+
+<!----------------------------------------- Body Section Four --------------------------------------------->
+
+
+<div class="body-section3">
+  <div class="container">
+    <h3>All Available Books</h3>
+    <div class="swiper-container text-center" [swiper]="config" [(index)]="index" *ngIf="producs.length != 0">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide" *ngFor="let item of producs">
+
+          <app-cart-operation [item]="item"></app-cart-operation>
+
+        </div>
+
+        <div class="swiper-scrollbar"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!----------------------------------------- hr Tags--------------------------------------------->
+
+<div class="container">
+  <hr>
+</div>
+
+<!----------------------------------------- hr Tags--------------------------------------------->
+
+
+<!----------------------------------------- Body Section Five --------------------------------------------->
+
+
+<div class="body-section3">
+  <div class="container">
+    <h3>Popular Books</h3>
+    <div class="swiper-container text-center" [swiper]="config" [(index)]="index" *ngIf="producs.length != 0">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide" *ngFor="let item of popularProducs">
+
+          <app-cart-operation [item]="item"></app-cart-operation>
+
+        </div>
+
+        <div class="swiper-scrollbar"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="card" style="">
+  <a [routerLink]="['/product',item.id]" routerLinkActive="router-link-active">
+    <img class="card-img-top img-responsive" [src]="item.imageUrl" style="height:17rem;">
+    <div class="card-body">
+
+      <h5 class="card-title" [title]="item.title">{{ item.title | slice:0:14 }}</h5>
+      <p class="card-text">{{ item.price | currency }}</p>
+
+    </div>
+  </a>
+
+  <div class="card-footer">
+
+    <button (click)="addCart(item)" class="btn btn-secondary btn-block" *ngIf="getQantity() == 0 ; else elseTemplate">
+
+      Add to Cart
+    </button>
+
+    <ng-template #elseTemplate>
+      <div class="row no-gutters">
+        <div class="col-2">
+          <button (click)="addCart(item)" class="btn btn-secondary btn-block">+</button>
+        </div>
+
+        <div class="col text-center">
+          {{ getQantity() }} in cart
+        </div>
+
+
+        <div class="col-2">
+          <button (click)="removeCart(item)" class="btn btn-secondary btn-block">-</button>
+        </div>
+      </div>
+
+    </ng-template>
+
+
+  </div>
+</div>

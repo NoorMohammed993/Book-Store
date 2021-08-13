@@ -1,0 +1,11 @@
+.order {
+  border: 2px solid #eeeeee;
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: 40px;
+  padding-left: 20px;
+}
+
+span {
+  float: right;
+}

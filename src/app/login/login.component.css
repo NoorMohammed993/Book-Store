@@ -1,0 +1,36 @@
+.login-bg {
+
+  border-radius: 10px;
+  min-height: 500px;
+  background-color: #7941A0;
+  margin: 20px;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.img-bg {
+  background-color: #fff;
+  margin: 20px 60px;
+  border-radius: 100%;
+
+}
+
+button {
+  margin-top: 10px;
+
+}
+
+.btn-primary {
+  color: #7941a0;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #714091;
+    border-color: #714091;
+}
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgb(121, 65, 160);
+}

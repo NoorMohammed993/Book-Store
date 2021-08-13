@@ -1,0 +1,150 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top"
+ [ngClass]="(bgTransparent)?'bg-transparent':'bg-light'"  [class.editBg]="scrolledBg">
+  <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active">
+    Book<span style="color:#ffc107">Store</span>
+  </a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+    (click)="toggleMenuChange()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [class.show]="toggleMenu" [class.editBg]="toggleMenu" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/store']" routerLinkActive="router-link-active">
+          <fa-icon [icon]="faStore"></fa-icon> Store <span class="sr-only">(current)</span>
+        </a>
+      </li>
+
+      <li class="nav-item dropdown custom" [class.show]="mouseOvered" (mouseout)="mouseOvered=false" (mouseover)="mouseOvered=true">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <fa-icon [icon]="faTh"></fa-icon>
+          Categories
+        </a>
+        <div class="dropdown-menu custom" aria-labelledby="navbarDropdown">
+          <div class="clip"></div>
+          <a class="dropdown-item" [routerLink]="['/store']" [queryParams]="{ category : item.id}" *ngFor="let item of categories$ | async">{{
+            item.name }}</a>
+
+        </div>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/shopping-cart']" routerLinkActive="active">
+          <fa-icon [icon]="faCart"></fa-icon>
+          <span class="badge badge-warning badge-pill"> {{ cartItemCount }}</span>
+        </a>
+      </li>
+
+      <li class="nav-item dropdown" ngbDropdown *ngIf="appUser">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" ngbDropdownToggle> {{ appUser.name }}</a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" ngbDropdownMenu>
+          <a class="dropdown-item" [routerLink]="['/my/orders']" routerLinkActive="router-link-active">My Orders</a>
+          <ng-container *ngIf="appUser.admin">
+            <a class="dropdown-item" [routerLink]="['/admin/orders']" routerLinkActive="router-link-active">Manage
+              Orders</a>
+            <a class="dropdown-item" [routerLink]="['/admin/products']" routerLinkActive="router-link-active">Manage
+              Products</a>
+          </ng-container>
+          <a class="dropdown-item" (click)="logOut()">Logout</a>
+
+        </div>
+
+      </li>
+
+      <li class="nav-item " *ngIf="!appUser">
+        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">
+          Login/SignUp
+        </a>
+      </li>
+    </ul>
+
+
+
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">         
+  <a class="navbar-brand" [routerLink]="['/']">BookShop</a>
+
+
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"
+    (click)="isNavbarCollapsed = !isNavbarCollapsed" >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isNavbarCollapsed">
+    <ul class="navbar-nav mr-auto">
+
+
+
+      <li class="nav-item">
+        <div ngbDropdown class="d-inline-block " [class.show]="mouseOvered" (mouseout)="mouseOvered=false" (mouseover)="mouseOvered=true">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            <fa-icon [icon]="faTh"></fa-icon> Categories
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item" *ngFor="let item of categories$ | async">
+              {{ item.name }}
+            </button>
+
+          </div>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/shopping-cart']" routerLinkActive="active">Shopping carts
+          <span class="badge badge-warning badge-pill"> {{ cartItemCount }}</span>
+        </a>
+      </li>
+
+
+      <li class="nav-item dropdown" ngbDropdown *ngIf="appUser">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false"> {{ appUser.name }} </a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" [routerLink]="['/my/orders']" routerLinkActive="router-link-active">Orders</a>
+          <ng-container *ngIf="appUser.admin">
+            <a class="dropdown-item" [routerLink]="['/admin/orders']" routerLinkActive="router-link-active">Manage
+              Orders</a>
+            <a class="dropdown-item" [routerLink]="['/admin/products']" routerLinkActive="router-link-active">Manage
+              Products</a>
+          </ng-container>
+          <a class="dropdown-item" (click)="logOut()">Logout</a>
+        </div>
+      </li>
+
+
+
+
+    </ul>
+    <span class="">
+      <li class="nav-item list-unstyled" *ngIf="!appUser">
+        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">
+          Login
+        </a>
+      </li>
+    </span>
+  </div>
+</nav>
+-->

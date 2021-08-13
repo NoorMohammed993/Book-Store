@@ -1,0 +1,50 @@
+<div class="container" *ngIf=" product ;else loading">
+  <div class="row">
+    <div class="col-md-4">
+      <img class="" [src]="product.imageUrl" style="width:19rem;height: 29rem;">
+    </div>
+    <div class="col-md-8 ">
+      <h1> {{ product.title }} </h1>
+      <h4 class=""> By <span class="author"> {{ product.author }} </span></h4>
+      <h4 class=""> <span class="price"> {{ product.price | currency }} </span></h4>
+      <h4><span class="description"> {{ product.description | slice:0:600 }} </span> </h4>
+      <div class="card-footer">
+
+        <button class="btn btn-secondary btn-block" (click)="addCart(product)" *ngIf="getQantity(product) == 0 ; else elseTemplate">
+
+          Add to Cart
+        </button>
+
+        <ng-template #elseTemplate>
+          <div class="row no-gutters">
+            <div class="col-2">
+              <button (click)="addCart(product)" class="btn btn-secondary btn-block">+</button>
+            </div>
+
+            <div class="col text-center">
+              {{ getQantity(product) }} in cart
+            </div>
+
+
+            <div class="col-2">
+              <button (click)="removeCart(product)" class="btn btn-secondary btn-block">-</button>
+            </div>
+          </div>
+
+        </ng-template>
+
+      </div>
+
+    </div>
+  </div>
+  <hr style="margin-top:50px;">
+  <h1 class="font-weigth-bold text-center">Book OverView</h1>
+  <span class="description"> {{ product.description | slice:0:length }}
+    <span *ngIf="product.description.length > 600" style="color:blueviolet;font-weight: bold;cursor: pointer" (click)="readMore(product.description.length)">
+      {{ readquantity }}</span>
+  </span>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

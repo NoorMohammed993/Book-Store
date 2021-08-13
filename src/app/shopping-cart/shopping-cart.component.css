@@ -1,0 +1,40 @@
+table .btn-secondary {
+  padding: .100rem .755rem;
+}
+
+.col-sm-10 {
+  padding: 0px;
+}
+
+a {
+  color: #fff;
+}
+
+.col-sm-10 {
+  padding-bottom: 121px;
+}
+
+@media (max-width: 768px) {
+
+
+  .col-sm-10 {
+    padding-bottom: 121px;
+    font-size: 0.8rem;
+  }
+
+  tbody .btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    padding: 1px 5px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  }
+}

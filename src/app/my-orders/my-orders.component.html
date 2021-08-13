@@ -1,0 +1,46 @@
+
+  <h1>Orders Hist0ry</h1>
+  <p>you have {{ userOrders.length }} order<span *ngIf="userOrders.length > 1 ">s</span> in you Orders Hist0ry</p>
+
+  <div class="row no-gutters">
+    <div class="col-sm-10">
+      <table class="table table-hover table-condensed table-light">
+        <thead>
+          <tr>
+            <th>#NO</th>
+            <th>Order Date</th>
+
+            <th class="text-center">Details</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="userOrders.length > 0; else noOrder">
+
+          <tr *ngFor="let item of userOrders ; let i = index">
+            <td> {{ i + 1 }} </td>
+            <td>
+              {{ item.placedTime }}
+            </td>
+            <td class="text-center">
+              <a [routerLink]="['/order/Details', item.id]" routerLinkActive="router-link-active">View Details </a>
+            </td>
+          </tr>
+
+        </tbody>
+
+        <ng-template #noOrder>
+          <tbody>
+            <tr class="text-center">
+              <td colspan="4">
+                <h3 style="margin-top:15px;"> No Order History Found </h3>
+              </td>
+            </tr>
+          </tbody>
+        </ng-template>
+
+
+      </table>
+    
+  </div>
+
+</div>
+

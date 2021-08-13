@@ -1,0 +1,13 @@
+<div class="row">
+
+  <div class="col-md-7">
+    <app-shipping (saveOrder)="saveOrder($event)" [cartItemCount]="cartItemCount"></app-shipping>
+  </div>
+
+  <div class="col-md-5">
+    <app-order-history  [showSubTitle]="true" [cartItemCount]="cartItemCount" [cartsItems]="cartsItems" [totalPrcie]="totalPrcie">
+    </app-order-history>
+  </div>
+
+
+</div>
